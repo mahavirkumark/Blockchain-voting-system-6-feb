@@ -1,0 +1,48 @@
+// Import the Twilio module
+const twilio = require('twilio');
+
+// Load environment variables (if you're using dotenv)
+require('dotenv').config();
+
+// Your Twilio Account SID and Auth Token (found on your Twilio console)
+const accountSid = process.env.TWILIO_ACCOUNT_SID;  // Using environment variables
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+// Your Twilio phone number
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;  // Your Twilio phone number
+
+// Create a Twilio client instance
+const client = new twilio(accountSid, authToken);
+
+// Function to send OTP
+function sendOTP(phoneNumber) {
+  const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+
+  client.messages.create({
+    body: `Your OTP code is ${otp}`,
+    to: phoneNumber,  // The phone number you're sending the OTP to
+    from: twilioPhoneNumber  // Your Twilio phone number
+  })
+  .then((message) => {
+    console.log(`OTP sent to ${phoneNumber}. Message SID: ${message.sid}`);
+    
+    // Save OTP in a temporary store (e.g., session, database, cache) for verification
+    // For example, you can store it in a variable or a database temporarily
+    storeOTP(otp);  // You can implement your storeOTP function to store OTP
+  })
+  .catch((error) => {
+    console.error('Error sending OTP:', error);
+  });
+}
+
+// Example usage
+const phoneNumber = '+1234567890';  // The recipient's phone number in E.164 format
+sendOTP(phoneNumber);
+
+// Function to store OTP temporarily (e.g., in-memory or database for verification later)
+function storeOTP(otp) {
+  // For example, save the OTP in a temporary in-memory store
+  // This is just an example; in production, you would want to store it securely
+  console.log(`Storing OTP: ${otp} for verification`);
+}
+
