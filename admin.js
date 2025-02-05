@@ -3,13 +3,13 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBZaQ457d_6VcMsn-ea7-nYvOBEwFyJ36E",
-    authDomain: "blockchain-496f3.firebaseapp.com",
-    projectId: "blockchain-496f3",
-    storageBucket: "blockchain-496f3.firebasestorage.app",
-    messagingSenderId: "532961221280",
-    appId: "1:532961221280:web:14b6d99f9b89975d4ac7c5",
-    measurementId: "G-1NBF9X7218"
+  apiKey: "AIzaSyB78RTVCg0cmSPp7A1RJyyAgBuCeolO0cc",
+    authDomain: "sk12-58e9e.firebaseapp.com",
+    databaseURL: "https://sk12-58e9e-default-rtdb.firebaseio.com",
+    projectId: "sk12-58e9e",
+    storageBucket: "sk12-58e9e.firebasestorage.app",
+    messagingSenderId: "470207874652",
+    appId: "1:470207874652:web:67ba1cf3629b7e5b144899"
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
